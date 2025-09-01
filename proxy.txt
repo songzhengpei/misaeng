@@ -15,7 +15,7 @@ DOMAIN-SUFFIX,mytvsuper.com
 DOMAIN-SUFFIX,themoviedb.org
 DOMAIN-SUFFIX,tmdb.org
 DOMAIN-SUFFIX,tibet.com
-
+DOMAIN-SUFFIX,miwifi.com
 # > ntRRR
 DOMAIN-SUFFIX, stream.ntrrr.top
 DOMAIN-SUFFIX, stream.synn.cc
