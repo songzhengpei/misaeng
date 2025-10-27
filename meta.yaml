@@ -1,0 +1,511 @@
+---
+pr:
+  type: select
+  proxies:
+    - Proxy
+    - Manual-a
+    - Manual-b
+    - Manual-c
+    - HongKong
+    - TaiWan
+    - Singapore
+    - Japan
+    - America
+    - Korea
+    - DIRECT
+pro:
+  type: select
+  proxies:
+    - Manual-a
+    - Manual-b
+    - Manual-c
+    - HongKong
+    - TaiWan
+    - Singapore
+    - Japan
+    - America
+    - Korea
+    - DIRECT
+use:
+  type: select
+  use:
+    - YTOO
+use01:
+  type: select
+  use:
+    - YTOO
+    - 一元机场
+proxy-providers:
+  YTOO:
+    type: http
+    url: https://api.oxycontinin.com/osubscribe.php?sid=58244&token=pSnikjVjrPiwKC4qxEqL&sip002=1
+    interval: 3600
+    path: ./proxy_provider/YTOO.yaml
+    proxy: DIRECT
+    header:
+      User-Agent:
+        - Clash/v1.18.0
+        - mihomo/1.18.3
+    health-check:
+      enable: true
+      interval: 600
+      url: https://cp.cloudflare.com/generate_204
+    override:
+      skip-cert-verify: true
+      udp: true
+  一元机场:
+    type: http
+    url: https://dash.pqjc.site/api/v1/client/subscribe?token=59d4dc0290320b44c5fd9201b0bc8be7
+    interval: 3600
+    path: ./proxy_provider/一元机场.yaml
+    proxy: DIRECT
+    header:
+      User-Agent:
+        - Clash/v1.18.0
+        - mihomo/1.18.3
+    health-check:
+      enable: true
+      interval: 600
+      url: https://cp.cloudflare.com/generate_204
+    override:
+      skip-cert-verify: true
+      udp: true
+port: 7890
+socks-port: 7891
+mixed-port: 7893
+redir-port: 7892
+tproxy-port: 7895
+allow-lan: true
+bind-address: "*"
+mode: rule
+tcp-concurrent: true
+unified-delay: true
+geox-url:
+  mmdb: https://testingcf.jsdelivr.net/gh/alecthw/mmdb_china_ip_list@release/Country.mmdb
+  geoip: https://testingcf.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat
+  geosite: https://testingcf.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat
+  asn: https://testingcf.jsdelivr.net/gh/xishang0128/geoip@release/GeoLite2-ASN.mmdb
+geo-auto-update: true
+geo-update-interval: 24
+geodata-mode: true
+log-level: info
+ipv6: true
+external-controller: 0.0.0.0:9090
+profile:
+  store-selected: true
+  store-fake-ip: true
+tun:
+  enable: true
+  stack: system
+  dns-hijack:
+    - 0.0.0.0:53
+  auto-detect-interface: false
+  auto-route: false
+  auto-redirect: false
+  strict-route: false
+  endpoint-independent-nat: true
+sniffer:
+  enable: true
+  override-destination: true
+  sniff:
+    QUIC:
+      ports:
+        - 443
+    TLS:
+      ports:
+        - 443
+        - 8443
+    HTTP:
+      ports:
+        - 80
+        - 8080-8880
+      override-destination: true
+  force-domain:
+    - +.netflix.com
+    - +.nflxvideo.net
+    - +.amazonaws.com
+    - +.media.dssott.com
+  skip-domain:
+    - +.apple.com
+    - Mijia Cloud
+    - dlg.io.mi.com
+    - +.oray.com
+    - +.sunlogin.net
+    - +.push.apple.com
+  parse-pure-ip: true
+  force-dns-mapping: true
+dns:
+  enable: true
+  prefer-h3: false
+  listen: 0.0.0.0:1053
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.0/16
+  fake-ip-filter:
+    - "*"
+    - +.lan
+    - +.local
+    - +.market.xiaomi.com
+    - +.msftconnecttest.com
+    - +.msftncsi.com
+  respect-rules: true
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  proxy-server-nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  nameserver-policy:
+    "geosite:cn,private":
+      - https://doh.pub/dns-query
+      - https://dns.alidns.com/dns-query
+    "geosite:!cn,!private":
+      - tls://dns.google
+      - tls://cloudflare-dns.com
+proxy-groups:
+  - name: Final
+    icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png
+    type: select
+    proxies:
+      - Proxy
+      - Manual-a
+      - Manual-b
+      - Manual-c
+      - HongKong
+      - TaiWan
+      - Singapore
+      - Japan
+      - America
+      - Korea
+      - DIRECT
+  - name: Proxy
+    icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png
+    type: select
+    proxies:
+      - Manual-a
+      - Manual-b
+      - Manual-c
+      - HongKong
+      - TaiWan
+      - Singapore
+      - Japan
+      - America
+      - Korea
+      - DIRECT
+  - name: Manual-a
+    icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Rocket.png
+    type: select
+    use:
+      - YTOO
+  - name: Manual-b
+    icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Rocket.png
+    type: select
+    use:
+      - YTOO
+      - 一元机场
+    filter: (?i)印尼|下载使用|美国洛杉矶|俄|俄罗斯|日用|香港 04|美国 09|美国 10
+  - name: Manual-c
+    icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Rocket.png
+    type: select
+    use:
+      - YTOO
+    filter: (?i)狮城|新加坡|美国|新|美
+  - name: LLM
+    icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/ChatGPT.png
+    type: select
+    proxies:
+      - Proxy
+      - Manual-a
+      - Manual-b
+      - Manual-c
+      - HongKong
+      - TaiWan
+      - Singapore
+      - Japan
+      - America
+      - Korea
+      - DIRECT
+  - name: YouTube
+    icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
+    type: select
+    proxies:
+      - Proxy
+      - Manual-a
+      - Manual-b
+      - Manual-c
+      - HongKong
+      - TaiWan
+      - Singapore
+      - Japan
+      - America
+      - Korea
+      - DIRECT
+  - name: Spotify
+    icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png
+    type: select
+    proxies:
+      - Proxy
+      - Manual-a
+      - Manual-b
+      - Manual-c
+      - HongKong
+      - TaiWan
+      - Singapore
+      - Japan
+      - America
+      - Korea
+      - DIRECT
+  - name: IM
+    icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
+    type: select
+    proxies:
+      - Proxy
+      - Manual-a
+      - Manual-b
+      - Manual-c
+      - HongKong
+      - TaiWan
+      - Singapore
+      - Japan
+      - America
+      - Korea
+      - DIRECT
+  - name: SNS
+    icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Instagram.png
+    type: select
+    proxies:
+      - Proxy
+      - Manual-a
+      - Manual-b
+      - Manual-c
+      - HongKong
+      - TaiWan
+      - Singapore
+      - Japan
+      - America
+      - Korea
+      - DIRECT
+  - name: Apple
+    icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
+    type: select
+    proxies:
+      - Proxy
+      - Manual-a
+      - Manual-b
+      - Manual-c
+      - HongKong
+      - TaiWan
+      - Singapore
+      - Japan
+      - America
+      - Korea
+      - DIRECT
+  - name: Google
+    icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google.png
+    type: select
+    proxies:
+      - Proxy
+      - Manual-a
+      - Manual-b
+      - Manual-c
+      - HongKong
+      - TaiWan
+      - Singapore
+      - Japan
+      - America
+      - Korea
+      - DIRECT
+  - name: Microsoft
+    icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png
+    type: select
+    proxies:
+      - Proxy
+      - Manual-a
+      - Manual-b
+      - Manual-c
+      - HongKong
+      - TaiWan
+      - Singapore
+      - Japan
+      - America
+      - Korea
+      - DIRECT
+  - name: Game
+    icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
+    type: select
+    proxies:
+      - Proxy
+      - Manual-a
+      - Manual-b
+      - Manual-c
+      - HongKong
+      - TaiWan
+      - Singapore
+      - Japan
+      - America
+      - Korea
+      - DIRECT
+  - name: Adblock
+    icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/AdBlack.png
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+      - Proxy
+  - name: Mainland
+    icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Direct.png
+    type: select
+    proxies:
+      - DIRECT
+      - Proxy
+  - name: HongKong
+    icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
+    type: url-test
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 50
+    use:
+      - YTOO
+    filter: (?i)港|hk|hongkong|hong kong
+  - name: TaiWan
+    icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png
+    type: url-test
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 50
+    use:
+      - YTOO
+    filter: (?i)台|tw|taiwan
+  - name: Japan
+    icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
+    type: url-test
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 50
+    use:
+      - YTOO
+    filter: (?i)日本|jp|japan
+  - name: America
+    icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
+    type: url-test
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 50
+    use:
+      - YTOO
+    filter: (?i)美|us|unitedstates|united states
+  - name: Singapore
+    icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
+    type: url-test
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 50
+    use:
+      - YTOO
+    filter: (?i)新|狮|sg|singapore
+  - name: Korea
+    icon: https://gh-proxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Korea.png
+    type: url-test
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
+    tolerance: 50
+    use:
+      - YTOO
+    filter: (?i)KR|Korea|KOR|首尔|韩|韓
+rule-providers:
+  AWAvenue-Ads:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Clash.yaml
+    interval: 64800
+  misaeng-direct:
+    type: http
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/songzhengpei/misaeng/refs/heads/main/direct0.txt
+    interval: 64800
+  misaeng-proxy:
+    type: http
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/songzhengpei/misaeng/refs/heads/main/proxy.txt
+    interval: 64800
+  misaeng-llm:
+    type: http
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/songzhengpei/misaeng/refs/heads/main/llm.txt
+    interval: 64800
+  ai-domain:
+    type: http
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/classical/category-ai-!cn.list
+    interval: 64800
+  testflight:
+    type: http
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/TestFlight/TestFlight.list
+    interval: 64800
+  game-download-cdn:
+    type: http
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/refs/heads/main/rule/Game_Download_CDN.list
+    interval: 64800
+  steam-cdn:
+    type: http
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/Aethersailor/Custom_OpenClash_Rules/refs/heads/main/rule/Steam_CDN.list
+    interval: 64800
+rules:
+  - DOMAIN,clash.razord.top,DIRECT
+  - DOMAIN,yacd.metacubex.one,DIRECT
+  - DOMAIN,yacd.haishan.me,DIRECT
+  - DOMAIN,d.metacubex.one,DIRECT
+  - DOMAIN,board.zash.run.place,DIRECT
+  - RULE-SET,AWAvenue-Ads,Adblock
+  - RULE-SET,misaeng-direct,Mainland
+  - RULE-SET,misaeng-proxy,Proxy
+  - RULE-SET,misaeng-llm,LLM
+  - GEOSITE,category-public-tracker,Mainland
+  - GEOSITE,github,Proxy
+  - GEOSITE,speedtest,Proxy
+  - RULE-SET,testflight,Proxy
+  - GEOSITE,category-ai-!cn,LLM
+  - GEOSITE,youtube,YouTube
+  - GEOSITE,category-communication,IM
+  - GEOSITE,category-social-media-!cn,SNS
+  - GEOIP,google,Google,no-resolve
+  - GEOIP,telegram,IM,no-resolve
+  - GEOIP,twitter,SNS,no-resolve
+  - GEOIP,facebook,SNS,no-resolve
+  - GEOSITE,spotify,Spotify
+  - GEOSITE,apple,Apple
+  - GEOSITE,google-cn,Google
+  - GEOSITE,google,Google
+  - GEOSITE,onedrive,Microsoft
+  - GEOSITE,microsoft,Microsoft
+  - GEOSITE,category-game-platforms-download,Mainland
+  - RULE-SET,game-download-cdn,Mainland
+  - RULE-SET,steam-cdn,Mainland
+  - GEOSITE,steam@cn,Mainland
+  - GEOSITE,steam,Game
+  - GEOSITE,category-games@cn,Mainland
+  - GEOSITE,category-games,Game
+  - GEOSITE,geolocation-!cn,Proxy
+  - GEOIP,private,Mainland,no-resolve
+  - GEOSITE,CN,Mainland
+  - GEOIP,CN,Mainland,no-resolve
+  - IP-CIDR,10.0.0.0/8,DIRECT
+  - IP-CIDR,172.16.0.0/12,DIRECT
+  - IP-CIDR,192.168.0.0/16,DIRECT
+  - IP-CIDR,100.64.0.0/10,DIRECT
+  - IP-CIDR,127.0.0.0/8,DIRECT
+  - MATCH,Final
