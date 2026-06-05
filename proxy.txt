@@ -16,3 +16,8 @@ DOMAIN-SUFFIX,themoviedb.org
 DOMAIN-SUFFIX,tmdb.org
 DOMAIN-SUFFIX,tibet.com
 DOMAIN-SUFFIX,miwifi.com
+DOMAIN-SUFFIX,emby.moe
+DOMAIN-SUFFIX,xxlb.net
+DOMAIN-SUFFIX,loseremby.org
+DOMAIN-SUFFIX,zabc.net
+IP-CIDR,154.12.52.149/25
