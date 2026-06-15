@@ -15,7 +15,6 @@ DOMAIN-SUFFIX,mytvsuper.com
 DOMAIN-SUFFIX,themoviedb.org
 DOMAIN-SUFFIX,tmdb.org
 DOMAIN-SUFFIX,tibet.com
-DOMAIN-SUFFIX,miwifi.com
 DOMAIN-SUFFIX,emby.moe
 DOMAIN-SUFFIX,xxlb.net
 DOMAIN-SUFFIX,loseremby.org
